@@ -4,3 +4,15 @@
     box-sizing: border-box;
     font-family:'Courier New', Courier, monospace;
 }
+
+body {
+    background: rgb(58, 69, 228);
+}
+
+.start_quiz_button{
+    position: absolute;
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%);
+}
+
