@@ -1,10 +1,10 @@
 // Storing references into variables for JS
-var quizContainer = document.getElementById('JSquiz');
-var resultsContainer = document.getElementById('JSresults');
-var submitButton = document.getElementById('submit');
-var startButton = document.getElementById('start');
-var jsQuestions = [
-    {
+// var quizContainer = document.getElementById('JSquiz');
+// var resultsContainer = document.getElementById('JSresults');
+// var submitButton = document.getElementById('submit');
+// var startButton = document.getElementById('start');
+// var jsQuestions = [
+  /*  {
         question: "Question 1?",
         answers: {
             a: "1",
