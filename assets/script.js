@@ -14,9 +14,46 @@ submitButton.addEventListener('click', showResults);
 
 var jsQuestions = [
     {
-        question: "Question 1?"
+        question: "Question 1?",
+        answers: {
+            a: "1",
+            b: "2",
+            c: "3",
+            d: "4",
+        },
+        correctAnswer: "a"
+    },
+    {
+        question: "Question 2?",
+        answers: {
+            a: "1",
+            b: "2",
+            c: "3",
+            d: "4",
+        },
+        correctAnswer: "b"
+    },
+    {
+        question: "Question 3?",
+        answers: {
+            a: "1",
+            b: "2",
+            c: "3",
+            d: "4",
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Question 4?",
+        answers: {
+            a: "1",
+            b: "2",
+            c: "3",
+            d: "4",
+        },
+        correctAnswer: "d"
     }
-]
+];
 
 
 
