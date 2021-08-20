@@ -13,32 +13,32 @@ body {
 
 .start_quiz_button { 
     position:absolute;
-    top: 50%
-    left: 50%
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
 }
 
 .start_quiz_button button{
     font-size: 27px;
     font-weight: 300;
-    color: black;
+    color: white;
     padding: none;
     border: none;
     border-radius: 7px;
-    background:rgb(58, 69, 228);
+    background:rgb(196, 53, 89);
     cursor: pointer;
 }
 
-.rules_box {
+#rules_box {
     width: 50%;
     background: whitesmoke;
     border-radius: 7px;
-    position: absolute;
+    position: center;
     margin-right: auto;
     margin-left: auto;
 }
 
-.rules_box .rules_title {
+#rules_box .rules_title {
     height: 60px;
     width: 90%;
     border-bottom: 2px solid lightgrey;
@@ -49,6 +49,43 @@ body {
     font-weight: 700;
 }
 
-.rules_box .rules_list {
+#rules_box .rules_list {
     padding: 15px 35px;
+}
+
+#rules_box .rules_list .rules {
+    margin: 5px 0;
+    font-size: 17;
+}
+
+#rules_box .rules_list .rules span {
+    font-weight: 700;
+    color: rgb(196, 53, 89);
+}
+
+#rules_box .buttons {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 40px;
+    border-top: 1px solid lightpurple;
+}
+
+#rules_box .buttons button {
+    margin: 0 5px;
+    height: 40px;
+    width: 100px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.buttons button.quit {
+    color: rgb(196, 53, 89);
+    border-color: rgb(196, 53, 89);
+
 }
