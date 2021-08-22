@@ -46,6 +46,11 @@ var jsQuestions = [
   },
 ];
 
+choice1.addEventListener("click", checkAnswers);
+choice2.addEventListener("click", checkAnswers);
+choice3.addEventListener("click", checkAnswers);
+choice4.addEventListener("click", checkAnswers);
+
 // Functions for JavaScript Starting Quiz
 
 startButton.addEventListener('click', startQuiz, startTimer); function startQuiz() {
@@ -58,10 +63,6 @@ startButton.addEventListener('click', startQuiz, startTimer); function startQuiz
   quizQ.classList.remove("hide");
 //   startTimer.classList.remove("hide");
 
-choice1.addEventListener("click", checkAnswers);
-choice2.addEventListener("click", checkAnswers);
-choice3.addEventListener("click", checkAnswers);
-choice4.addEventListener("click", checkAnswers);
   
 //   const output = [];
   var question = jsQuestions[currentQuestion];
@@ -73,8 +74,8 @@ choice4.addEventListener("click", checkAnswers);
 //     //   buttonAnswersEl.textContent = question.answers[i];
 //     //   buttonAnswersEl.setAttribute("onClick", "checkAnswers()")
 //     //   answersEl.append(buttonAnswersEl);
-
 //  }
+
     
 }
 
