@@ -1,80 +1,70 @@
 // Storing references into variables for JS
-var quizContainer = document.getElementById('JSquiz');
-var resultsContainer = document.getElementById('JSresults');
-var submitButton = document.getElementById('submit');
-var startButton = document.getElementById('start');
- var jsQuestions = [
-   {
-        question: "Question 1?",
-        answers: {
-            a: "1",
-            b: "2",
-            c: "3",
-            d: "4",
-        },
-        correctAnswer: "a"
-    },
-    {
-        question: "Question 2?",
-        answers: {
-            a: "1",
-            b: "2",
-            c: "3",
-            d: "4",
-        },
-        correctAnswer: "b"
-    },
-    {
-        question: "Question 3?",
-        answers: {
-            a: "1",
-            b: "2",
-            c: "3",
-            d: "4",
-        },
-        correctAnswer: "c"
-    },
-    {
-        question: "Question 4?",
-        answers: {
-            a: "1",
-            b: "2",
-            c: "3",
-            d: "4",
-        },
-        correctAnswer: "d"
-    }
+var quizContainer = document.getElementById("JSquiz");
+var resultsContainer = document.getElementById("JSresults");
+var startButton = document.querySelector(".start_quiz_button");
+var startTimer = document.querySelector(".timer");
+var rulesTitle = document.querySelector(".rules_title");
+var rulesList = document.querySelector(".rules_list");
+var quizQ = document.querySelector(".quizQuestions");
+var questionEl = document.querySelector("#question");
+var answersEl = document.querySelector("#answers");
+var currentQuestion = 0;
+var jsQuestions = [
+  {
+    question: "Question 1?",
+    answers: ["1", "2", "3", "4"],
+    
+    correctAnswer: "1",
+  },
+  {
+    question: "Question 2?",
+    answers: ["1", "2", "3", "4"],
+    
+    correctAnswer: "2",
+  },
+  {
+    question: "Question 3?",
+    answers: ["1", "2", "3", "4"],
+      
+    correctAnswer: "3",
+},
+  {
+    question: "Question 4?",
+    answers: ["1", "2", "3", "4"],
+    
+    correctAnswer: "4",
+  },
 ];
 
 // Functions for JavaScript Quiz
-function startQuiz(){
-    // Storing HTML output
-    const output = [];
-    // Working on adding creating individual question logging
-    myQuestion.forEach(
-        (currentQuestion, questionNumber) => {
-
-            // creating variable to store list of possible answers
-            var answers = [];
-            // creating variable for available answers
-            for(letter in currentQuestion.answers){
-
-                answers.push(
-                    `<label>
-                        <input type="radio" name="questions${questionNumber}" value="${letter}">
-                        ${letter} :
-                        ${currentQuestion.answers[letter]}
-                    </label>`
-                );
-            }
-            output.push(
-                `<div class="question"> ${currentQuestion.question} </div>
-                <div class="answers"> ${answers.join('')} </div>`
-            );
-        }
-    )
+function startQuiz() {
+  // Storing HTML output
+  startButton.classList.add("hide");
+  rulesTitle.classList.add("hide");
+  rulesList.classList.add("hide");
+  quizQ.classList.remove("hide");
+  
+  const output = [];
+  var question = jsQuestions[currentQuestion];
+  questionEl.textContent = question.question
+  // Working on adding creating individual question logging
+  console.log(question.answers);
+  for(var i=0; i<question.answers.length; i++) {
+      var buttonAnswersEl = document.createElement("button");
+      buttonAnswersEl.textContent = question.answers[i];
+      buttonAnswersEl.setAttribute("onClick", "checkAnswers()")
+      answersEl.append(buttonAnswersEl);    
+ }
 }
-quizContainer.innerHTML = output.join('');
+
+function checkAnswers() {
+    console.log("hello");
+}
+
+
+
+
+/* quizContainer.innerHTML = output.join('');
 // Function for showing quiz results at the end
 function showResults(){
     // This allows me to grab the answer containers
@@ -86,17 +76,16 @@ function showResults(){
     myQuestion.forEach( (currentQuestion, questionNumber) => {
 
         const answerContainer = answerContainers[questionNumber];
-        const sel
     }
     
     )
 
 
     // Now the next 2 sections are about getting each question AND identify the choice the user chose
-    myQuestion.forEach(correctQuestion, questionNumber) => {
+    myQuestion.forEach((correctQuestion, questionNumber) => {
         var answerContainer = answerContainers
     }
-}
+    )};
 // Showing the the quiz right away
 buildQuiz();
 // Event listener for showing quiz results once user clicks on submit quiz/show results
@@ -137,36 +126,38 @@ $(document).on("click", ".question-option", function() {
 
 displayQuestion(question[0]); */
 
-var timeEl = document.querySelector(".time");
+// var timeEl = document.querySelector(".time");
 
 // Selects element by id
-var mainEl = document.getElementById("main");
+// var mainEl = document.getElementById("main");
 
-var secondsLeft = 10;
+// var secondsLeft = 10;
 
-function setTime() {
-  // Sets interval in variable
-  var timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
+// function setTime() {
+//   // Sets interval in variable
+//   var timerInterval = setInterval(function() {
+//     secondsLeft--;
+//     timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
 
-    if(secondsLeft === 0) {
-      // Stops execution of action at set interval
-      clearInterval(timerInterval);
-      // Calls function to create and append image
-      sendMessage();
-    }
+//     if(secondsLeft === 0) {
+//       // Stops execution of action at set interval
+//       clearInterval(timerInterval);
+//       // Calls function to create and append image
+//       sendMessage();
+//     }
 
-  }, 1000);
-}
+//   }, 1000);
+// }
 
-// Function to create and append colorsplosion image
-function sendMessage() {
-  timeEl.textContent = " ";
-  var imgEl = document.createElement("img");
-  imgEl.setAttribute("src", "images/image_1.jpg");
-  mainEl.appendChild(imgEl);
+// // Function to create and append colorsplosion image
+// function sendMessage() {
+//   timeEl.textContent = " ";
+//   var imgEl = document.createElement("img");
+//   imgEl.setAttribute("src", "images/image_1.jpg");
+//   mainEl.appendChild(imgEl);
 
-}
+// }
 
-setTime();
+// setTime();
+
+startButton.addEventListener("click", startQuiz);
