@@ -2,23 +2,33 @@
 var quizContainer = document.getElementById("JSquiz");
 var resultsContainer = document.getElementById("JSresults");
 var startButton = document.querySelector(".start_quiz_button");
+var quitButton = document.querySelector(".quit")
 var startTimer = document.querySelector(".timer");
 var rulesTitle = document.querySelector(".rules_title");
 var rulesList = document.querySelector(".rules_list");
 var quizQ = document.querySelector(".quizQuestions");
 var questionEl = document.querySelector("#question");
 var answersEl = document.querySelector("#answers");
+var showAnswersCorrect = document.querySelector("#showAnswersCorrect");
+var showAnswersWrong = document.querySelector(".showAnswersWrong");
+var choice1 = document.querySelector("#choice1");
+var choice2 = document.querySelector("#choice2");
+var choice3 = document.querySelector("#choice3");
+var choice4 = document.querySelector("#choice4");
+var answersTracker = " ";
 var currentQuestion = 0;
+var correctAnswer = 0;
+var score;
 var jsQuestions = [
   {
     question: "Question 1?",
-    answers: ["1", "2", "3", "4"],
+    answers: ["ONE", "2", "3", "4"],
     
     correctAnswer: "1",
   },
   {
     question: "Question 2?",
-    answers: ["1", "2", "3", "4"],
+    answers: ["1", "two", "3", "4"],
     
     correctAnswer: "2",
   },
@@ -36,128 +46,78 @@ var jsQuestions = [
   },
 ];
 
-// Functions for JavaScript Quiz
-function startQuiz() {
-  // Storing HTML output
+// Functions for JavaScript Starting Quiz
+
+startButton.addEventListener('click', startQuiz, startTimer); function startQuiz() {
+
+  // Initializing Content. Hide rules, start timer, show first question. We have LIFT OFF!
+
   startButton.classList.add("hide");
   rulesTitle.classList.add("hide");
   rulesList.classList.add("hide");
   quizQ.classList.remove("hide");
+//   startTimer.classList.remove("hide");
+
+choice1.addEventListener("click", checkAnswers);
+choice2.addEventListener("click", checkAnswers);
+choice3.addEventListener("click", checkAnswers);
+choice4.addEventListener("click", checkAnswers);
   
-  const output = [];
+//   const output = [];
   var question = jsQuestions[currentQuestion];
   questionEl.textContent = question.question
   // Working on adding creating individual question logging
   console.log(question.answers);
-  for(var i=0; i<question.answers.length; i++) {
-      var buttonAnswersEl = document.createElement("button");
-      buttonAnswersEl.textContent = question.answers[i];
-      buttonAnswersEl.setAttribute("onClick", "checkAnswers()")
-      answersEl.append(buttonAnswersEl);    
- }
+// //   for(var i=0; i<question.answers.length; i++) {
+//     //   var buttonAnswersEl = document.createElement("button");
+//     //   buttonAnswersEl.textContent = question.answers[i];
+//     //   buttonAnswersEl.setAttribute("onClick", "checkAnswers()")
+//     //   answersEl.append(buttonAnswersEl);
+
+//  }
+    
 }
+
+// This function will check all the answers, store the user's content and trigger any penalization actions
+// for wrong answ÷er.
 
 function checkAnswers() {
-    console.log("hello");
+       
+        if(output == jsQuestions[currentQuestion].answer){
+            textContent.showAnswersCorrect="correct"
+            updateAnswersTracker("correct")
+            score++
+        }
+        else {
+            display.textContent.showAnswersWrong="wrong"
+            updateAnswersTracker("wrong")
+        }
+        disableClick();
+    }
+
+
+
+
+//TIME COUNTDOWN TIMER
+const startingMinutes = 1;
+
+function startTimer() {
+  var timeInterval = setInterval(function () {
+    if (timeLeft > 1) {
+      startTimer.textContent = timeLeft + " seconds remaining";
+      timeLeft--;
+    } else if (timeLeft === 1) {
+      startTimer.textContent = timeLeft + " second remaining";
+      timeLeft--;
+    } else {
+      clearInterval(timeInterval);
+      startTimer.textContent = "Time's up!";
+      results();
+    }
+  }, 1000);
 }
 
-
-
-
-/* quizContainer.innerHTML = output.join('');
-// Function for showing quiz results at the end
-function showResults(){
-    // This allows me to grab the answer containers
-    var answerContainers = quizContainer.querySelectorAll('.answers');
-
-    // The let function will let me track the user's choices
-    let numCorrect = 0;
-
-    myQuestion.forEach( (currentQuestion, questionNumber) => {
-
-        const answerContainer = answerContainers[questionNumber];
-    }
-    
-    )
-
-
-    // Now the next 2 sections are about getting each question AND identify the choice the user chose
-    myQuestion.forEach((correctQuestion, questionNumber) => {
-        var answerContainer = answerContainers
-    }
-    )};
-// Showing the the quiz right away
-buildQuiz();
 // Event listener for showing quiz results once user clicks on submit quiz/show results
-submitButton.addEventListener('click', showResults);
-
-
-
-
-
-
-
-
-
-
-/* let question = [
-    {
-        "text": "What is 1+10?",
-        "options": ["1", "11", "12", "0"],
-        "solution": "11"
-    },
-]
-
-funtion displayQuestion(q) {
-    let $text = $('<h3>').text(q["text"]);
-    $("#question-div").append($text);
-
-    let opts = q["options"];
-    for (let i=0; i<opts.length; i++) {
-        let $option = $('<button/>').attr({ value: opts[i], class: 'question-option'});
-        $option.text(opts[i])
-        $("question-div").append($option);
-    }
-};
-
-$(document).on("click", ".question-option", function() {
-    alert("test")
-});
-
-displayQuestion(question[0]); */
-
-// var timeEl = document.querySelector(".time");
-
-// Selects element by id
-// var mainEl = document.getElementById("main");
-
-// var secondsLeft = 10;
-
-// function setTime() {
-//   // Sets interval in variable
-//   var timerInterval = setInterval(function() {
-//     secondsLeft--;
-//     timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
-
-//     if(secondsLeft === 0) {
-//       // Stops execution of action at set interval
-//       clearInterval(timerInterval);
-//       // Calls function to create and append image
-//       sendMessage();
-//     }
-
-//   }, 1000);
-// }
-
-// // Function to create and append colorsplosion image
-// function sendMessage() {
-//   timeEl.textContent = " ";
-//   var imgEl = document.createElement("img");
-//   imgEl.setAttribute("src", "images/image_1.jpg");
-//   mainEl.appendChild(imgEl);
-
-// }
-
-// setTime();
-
-startButton.addEventListener("click", startQuiz);
+// submitButton.addEventListener('click', showResults);
+// startButton.addEventListener('click', startQuiz, startTimer);
+quitButton.addEventListener('click', endQuiz);

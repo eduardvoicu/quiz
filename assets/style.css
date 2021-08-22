@@ -9,7 +9,17 @@ body {
     background: rgb(11, 17, 99);
 }
 
-/* Rules*/
+/* Timer */
+
+.timer {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+    height: 150px;
+    width: 300px;
+    color: red;
+    padding: 25px;
+} 
+/* Rules */
 
 #rules_box {
     width: 50%;

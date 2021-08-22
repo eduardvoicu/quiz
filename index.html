@@ -9,14 +9,13 @@
 
   <body>
     <!-- <div class="start_quiz_button"><button>Start Quiz</button></div> -->
-
+    <div class="timer">01:00</div>
     <!-- Rules and Information Box -->
     <div id="rules_box">
-      <div class="timer hide"></div>
       <div class="rules_title"><span>Before We Begin The JS Quiz</span></div>
       <div class="rules_list">
         <div class="rules">
-          <span>Rule 1.</span> You only have <span>2 minutes</span> to complete
+          <span>Rule 1.</span> You only have <span>1 minute</span> to complete
           the quiz.
         </div>
         <div class="rules">
@@ -42,13 +41,19 @@
         <button class="start_quiz_button">Start Quiz</button>
         <button class="quit">Exit Quiz</button>
       </div>
+      
       <div class="quizQuestions hide">
         <div id="JSquiz">
           <h1 id="question"></h1>
           <h2 id="answers"></h2>
+          <button class="answerButt" id="choice1" data-value="1"></button>
+          <button class="answerButt" id="choice2" data-value="2"></button>
+          <button class="answerButt" id="choice3" data-value="3"></button>
+          <button class="answerButt" id="choice4" data-value="4"></button>
         </div>
         <div id="JSresults"></div>
       </div>
+
     </div>
     <script src="assets/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
